@@ -6,7 +6,7 @@
 #    By: ccouliba <ccouliba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 20:03:20 by ccouliba          #+#    #+#              #
-#    Updated: 2021/08/12 20:49:59 by ccouliba         ###   ########.fr        #
+#    Updated: 2021/08/20 16:28:12 by ccouliba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ CC = @gcc
 
 CFLAGS = -g -Wall -Wextra -Werror
 
-SRCS_CLIENT =	srcs/client.c srcs/minitalk_utils.c
+SRCS_CLIENT =	srcs/client.c srcs/minitalk_utils.c \
+				srcs/minitalk_color_utils.c
 
-SRCS_SERVER =	srcs/server.c srcs/minitalk_utils.c
+SRCS_SERVER =	srcs/server.c srcs/minitalk_utils.c \
+				srcs/minitalk_color_utils.c
 
 _GREY=	$'\033[1;30m
 _RED=	$'\033[1;31m

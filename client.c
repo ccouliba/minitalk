@@ -6,7 +6,7 @@
 /*   By: ccouliba <ccouliba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:50:33 by ccouliba          #+#    #+#             */
-/*   Updated: 2021/08/19 13:34:49 by ccouliba         ###   ########.fr       */
+/*   Updated: 2021/08/23 18:17:12 by ccouliba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int	main(int ac, char **av)
 		send_message(pid, av[2]);
 	}
 	else
-		ft_putstr_fd("Syntax error. USE WITH PID and MESSAGE\n", 1);
+	{
+		ft_print_error_color("Syntax error", 1, RED);
+		ft_putstr_fd_color("USING : ./client [PID] [MESSAGE]\n", 1, RED);
+	}
 	return (0);
 }
