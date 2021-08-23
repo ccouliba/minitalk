@@ -6,7 +6,7 @@
 /*   By: ccouliba <ccouliba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 16:17:27 by ccouliba          #+#    #+#             */
-/*   Updated: 2021/08/23 22:05:08 by ccouliba         ###   ########.fr       */
+/*   Updated: 2021/08/24 01:45:59 by ccouliba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	ft_print_error_color(char *s, int fd, char *color)
 {
 	ft_putchar_fd('[', fd);
 	ft_putstr_fd_color(s, fd, color);
-	ft_putchar_fd('[', fd);
+	ft_putstr_fd("]\n", 1);
 }
