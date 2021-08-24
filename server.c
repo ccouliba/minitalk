@@ -6,7 +6,7 @@
 /*   By: ccouliba <ccouliba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:50:30 by ccouliba          #+#    #+#             */
-/*   Updated: 2021/08/23 22:03:54 by ccouliba         ###   ########.fr       */
+/*   Updated: 2021/08/24 06:43:05 by ccouliba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_mess	init_struct(void)
 	return (msg);
 }
 
-void	get_message(int bit)
+void	get_bit(int bit)
 {
 	static t_mess	msg;
 
@@ -35,21 +35,22 @@ void	get_message(int bit)
 			ft_putchar_fd('\n', 1);
 		msg = init_struct();
 	}
+	// else
+	// [
+
+	// ]
+
 }
 
 int	main(void)
 {
-	t_mess	msg;
-
-	msg = init_struct();
 	ft_putstr_fd("Server PID : [", 1);
 	ft_putnbr_fd_color(getpid(), 1, PURPLE);
-	ft_putchar_fd(']', 1);
-	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("]\n", 1);
 	while (1)
 	{
-		signal(SIGUSR2, get_message);
-		signal(SIGUSR1, get_message);
+		signal(SIGUSR2, get_bit);
+		signal(SIGUSR1, get_bit);
 		pause();
 	}
 	return (0);

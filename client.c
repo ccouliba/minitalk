@@ -6,24 +6,35 @@
 /*   By: ccouliba <ccouliba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:50:33 by ccouliba          #+#    #+#             */
-/*   Updated: 2021/08/23 18:17:12 by ccouliba         ###   ########.fr       */
+/*   Updated: 2021/08/24 06:42:03 by ccouliba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-void	send_message(int pid, char *s)
+void	print_error(char *color, int fd)
 {
-	int		bit;
+	ft_putchar_fd('[', fd);
+	ft_putstr_fd_color("Syntax error", fd, color);
+	ft_putstr_fd(END, fd);
+	ft_putstr_fd("]\n", fd);
+	ft_putstr_fd_color("Missing argument. ", 2, color);
+	ft_putstr_fd_color("Try ./client SERVER_PID MESSAGE", 2, color);
+	ft_putstr_fd("\n", fd);
+}
+
+void	send_msg(int pid, char *s)
+{
+	int		shift;
 	size_t	i;
 
 	i = -1;
 	while (++i <= ft_strlen(s))
 	{
-		bit = -1;
-		while (++bit < 7)
+		shift = -1;
+		while (++shift < 7)
 		{
-			if ((s[i] >> bit) & 1)
+			if ((s[i] >> shift) & 1)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
@@ -34,17 +45,9 @@ void	send_message(int pid, char *s)
 
 int	main(int ac, char **av)
 {
-	int	pid;
-
-	if (ac == 3)
-	{
-		pid = ft_atoi(av[1]);
-		send_message(pid, av[2]);
-	}
+	if (ac != 3)
+		print_error(RED, 2);
 	else
-	{
-		ft_print_error_color("Syntax error", 1, RED);
-		ft_putstr_fd_color("USING : ./client [PID] [MESSAGE]\n", 1, RED);
-	}
+		send_msg(ft_atoi(av[1]), av[2]);
 	return (0);
 }
